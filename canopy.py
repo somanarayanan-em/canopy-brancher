@@ -51,10 +51,14 @@ def num_to_letters(n: int) -> str:
 def build_branch_list(cohort, num_classrooms, groups_per_classroom):
     branches = []
     for c in range(1, num_classrooms + 1):
-        classroom = f"classroom-{c:02d}"
+        # A single classroom for the day doesn't need a classroom segment.
+        if num_classrooms == 1:
+            prefix = cohort
+        else:
+            prefix = f"{cohort}/classroom-{c:02d}"
         for g in range(1, groups_per_classroom + 1):
             letter = num_to_letters(g)
-            branches.append(f"{cohort}/{classroom}/group{letter}")
+            branches.append(f"{prefix}/group{letter}")
     branches.append(f"{cohort}/instructor")
     return branches
 
@@ -141,7 +145,7 @@ class CohortBranchApp:
 
         # --- Branch counts ---
         ttk.Label(main, text="Number of classrooms").grid(row=row, column=0, sticky="w", pady=4)
-        self.classrooms_var = tk.StringVar(value="2")
+        self.classrooms_var = tk.StringVar(value="1")
         ttk.Entry(main, textvariable=self.classrooms_var).grid(row=row, column=1, columnspan=2, sticky="ew", padx=(8, 0))
         row += 1
 

@@ -53,24 +53,29 @@ Git still has to be installed on the computer where you open the app. Python is 
 
 ## What to fill in
 
-| Field | Meaning |
-|---|---|
-| Repository folder | The local git clone to work in. This is what determines which repo/remote you're pushing to — Canopy doesn't ask for a repo URL directly. |
-| Cohort name | Branch prefix, e.g. `em-crashcourse-20260925` (auto-filled with today's date). |
-| Number of classrooms | How many classrooms to create. |
-| Groups per classroom | How many group branches inside each classroom. |
-| Base branch | Branch everything forks from (usually `main`). |
-| Remote | Which configured remote in that repo to push to (usually `origin`). |
+The window opens with one classroom and four groups already filled in. Work down the form, then preview before you create anything.
 
-## Workflow
+![Canopy window, ready to fill in](screenshots/canopy.jpg)
 
-1. Pick the **Repository folder** (must already be a git clone).
-2. Fill in the cohort details.
-3. Click **Preview** — shows the full branch list and counts, touches nothing.
-4. Check it looks right, then click **Create && Push**.
-5. Confirm the dialog. Watch progress in the log pane.
+1. **Repository folder.** Pick the local git clone these branches belong to. Use **Browse…** if you don't want to type the path. This folder is what decides which repo gets the branches.
+2. **Cohort name.** This is the branch prefix. It starts as `em-crashcourse-` plus today's date. Change it when this run needs a different name.
+3. **Number of classrooms.** This starts at **1**. Leave it at 1 when everyone is in a single classroom. Those branches are named `<cohort>/groupa`, with no classroom segment. Raise it when several classrooms run in parallel on the same day. Each classroom then gets its own segment: `classroom-01`, `classroom-02`, and so on.
+4. **Groups per classroom.** How many group branches to create inside each classroom (`groupa`, `groupb`, `groupc`, …). The same count is used for every classroom.
+5. **Base branch.** The branch the new ones are created from. Usually `main`.
+6. **Remote.** Which remote in that repo to push to. Usually `origin`. It sits on the same row as Base branch.
+7. Click **Preview**. The log lists every branch and a count. Nothing is created or pushed.
+8. If the list looks right, click **Create && Push** and confirm. Progress shows up in the log. Branches that already exist are skipped.
 
-Branches are created as:
+With one classroom, the default, the names leave out `classroom-01`:
+
+```
+<cohort>/groupa
+<cohort>/groupb
+...
+<cohort>/instructor
+```
+
+With two or more classrooms running in parallel that day, each classroom keeps its own segment, and every run still adds an instructor branch:
 
 ```
 <cohort>/classroom-01/groupa
