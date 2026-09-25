@@ -6,8 +6,8 @@ Canopy creates the git branches for a cohort: one set for the groups, plus an in
 
 Get the app that matches your computer, then double-click it. You do not need Python, Cursor, or VS Code.
 
-- **Mac:** download `Canopy.app` and double-click it.
-- **Windows:** download `Canopy.exe` and double-click it.
+- **Mac:** download [Canopy.app](downloads/Canopy.app) and double-click it.
+- **Windows:** download [Canopy.exe](downloads/Canopy.exe) and double-click it.
 
 Git has to be installed on that computer, and you need to already be able to push to the repository. Canopy does not ask for a password. It pushes as you.
 
